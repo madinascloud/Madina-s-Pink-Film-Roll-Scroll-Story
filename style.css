@@ -1,0 +1,11 @@
+h1, h2 {
+  font-family: "Pinyon Script", cursive;
+}
+
+p, span, .caption {
+  font-family: "Alumni Sans Pinstripe", sans-serif !important;
+  font-size: 50px;
+  letter-spacing: 0.05em;
+  color: #5a3a4f;
+}
+
