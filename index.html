@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pink Film Roll — Scroll Story</title>
+<!-- Google Font links -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+
+<style>
+    body {
+      background-color: #ffeef8;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Pinyon Script", cursive;
+      font-size: 3rem;
+      color: #ff79b0;
+    }
+
+    p {
+      font-family: "Alumni Sans Pinstripe", sans-serif;
+      font-size: 1.4rem;
+      color: #5a3a4f;
+    }
+    figcaption {
+      font-family: "Pinyon Script", cursive;
+      font-size: 1rem;
+      color: #5a3a4f;
+    }
+  </style>
+<style>
+  :root{
+    --bg1:#ffe6f2;      /* soft pink background */
+    --bg2:#f7eaff;      /* soft lilac */
+    --ink:#3d2432;
+    --film:#14151a;     /* film body */
+    --hole:#f8f0fa;     /* hole color (shows as punched) */
+    --frame:#fffdfa;    /* photo mat */
+    --accent:#ff7ab8;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: linear-gradient(180deg,var(--bg1),var(--bg2));
+    overflow-x:hidden;
+  }
+
+  header{
+    text-align:center; padding:56px 5vw 28px;
+  }
+  header h1{
+    margin:0 0 6px; font-size:clamp(28px,6vw,56px);
+  }
+  header p{margin:0; opacity:.8}
+  .tag{
+    display:inline-block; margin-bottom:10px;
+    padding:6px 12px; border-radius:999px;
+    background:rgba(255,122,184,.15);
+    border:1px solid rgba(255,122,184,.35);
+    font-weight:700;
+  }
+
+  .reel-wrap{
+    display:flex; justify-content:center;
+    padding: 8px 0 80px;
+  }
+
+  /* FILM STRIP */
+  .film{
+    position:relative;
+    width:min(860px,94vw);
+    background: var(--film);
+    border-radius:10px;               /* sharper edges */
+    padding: 46px 56px;               /* inner gutter for holes + frames */
+    box-shadow: 0 26px 60px rgba(0,0,0,.35);
+    border: 1px solid #0e0f13;
+  }
+
+  /* Sprocket holes: crisp rectangular punches */
+  .film::before, .film::after{
+    content:"";
+    position:absolute; top:12px; bottom:12px; width:28px;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0 24px,             /* spacing above each hole */
+        transparent 24px,
+        var(--hole) 24px 56px           /* rectangular hole block */
+      );
+    border-radius:6px;
+    filter: none;
+  }
+  .film::before{ left:10px; }
+  .film::after { right:10px; }
+
+  /* Film header markings (optional, to sell the “film” look) */
+  .markings{
+    position:absolute; top:12px; left:56px; right:56px;
+    display:flex; justify-content:space-between; color:#e3d6e8;
+    font: 700 12px/1 ui-sans-serif, system-ui, -apple-system;
+    letter-spacing:.12em; opacity:.55;
+  }
+
+  /* Frames */
+  .frame{
+    margin: 0 auto 40px;
+    background: var(--frame);
+    border: 4px solid #e9dff1;
+    border-radius:8px;                 /* sharper corners */
+    padding:10px;
+    max-width: 720px;
+    box-shadow: 0 10px 26px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.7);
+    transform: translateY(24px) scale(.985);
+    opacity:0;
+    will-change: transform, opacity;
+  }
+  .frame img{
+    width:100%; display:block; border-radius:6px;
+    background:#f7f1fb; object-fit:cover; max-height:70vh;
+  }
+  .caption{
+    text-align:center; padding:10px 6px 2px; color:#6b4060; font-size:15px;
+  }
+
+  /* Reveal animation */
+  .in{ opacity:1; transform: translateY(0) scale(1); transition: transform .7s cubic-bezier(.2,.75,.2,1), opacity .7s ease }
+
+  footer{ text-align:center; padding:20px 5vw 60px; color:#7b5870; font-size:14px }
+  @media (max-width:600px){
+    .film{ padding:38px 44px }
+    .film::before,.film::after{ width:22px }
+    .frame{ border-width:3px }
+  }
+</style>
+</head>
+<body>
+
+<header>
+
+  <h1>My Pink Reel</h1>
+  <p>Scroll down the film - each frame is a memory.</p>
+</header>
+
+<main class="reel-wrap">
+  <section class="film" id="film">
+    <div class="markings">
+      <span>ISO 400 • 36 EXP</span>
+      <span>PINK-ROLL</span>
+    </div>
+
+    <!-- Replace these images + captions with yours -->
+    <figure class="frame">
+      <img src="Media/Photo 1.png" alt="Media/Photo 1" />
+      <figcaption class="caption">First Days in Abu Dhabi - a trip to the desert and my name in arabic</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="Media/Phot 2 .png" alt="Photo 2" />
+      <figcaption class="caption">My first Coding experience in Communications Lab</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="Media/Photo 3.png" alt="Photo 3" />
+      <figcaption class="caption">Me and my friends in our first days in Abu Dhabi at the desert</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="Media/Photo 4.png" alt="Photo 4" />
+      <figcaption class="caption">Louvre Museum was so beautiful</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="Media/Screenshot 2025-10-05 at 22.42.04.png" alt="Photo 5" />
+      <figcaption class="caption">My first RealAD Show, it was amazing</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="Media/Photo 6.png" alt="Photo 6" />
+      <figcaption class="caption">My Team posing for our comic</figcaption>
+    </figure>
+    <!-- /replace -->
+  </section>
+</main>
+
+<footer>
+  Madina's story in Abu Dhabi💗
+</footer>
+
+<script>
+  // Reveal frames as they enter viewport (simple scroll animation)
+  const frames = document.querySelectorAll('.frame');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  }, {threshold: .18});
+  frames.forEach(f=> io.observe(f));
+</script>
+
+</body>
+</html>
